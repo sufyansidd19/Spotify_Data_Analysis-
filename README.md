@@ -76,25 +76,25 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
    ```
 2.List all albums along with their respective artists.
 ```sql
-	SELECT DISTINCT album, artist
-	FROM spotify;
+     SELECT DISTINCT album, artist
+     FROM spotify;
 ```
 3. Get the total number of comments for tracks where `licensed = TRUE`.
 SELECT COUNT(DISTINCT comments) AS total_comments 
 ```sql	
- 	FROM spotify 
-	WHERE licensed=TRUE;
+     FROM spotify 
+     WHERE licensed=TRUE;
 ```
 4. Find all tracks that belong to the album type `single`.
 ```sql
-	SELECT * FROM spotify
-	WHERE album_type='single';
-```sql
+     SELECT * FROM spotify
+     WHERE album_type='single';
+```
 5. Count the total number of tracks by each artist.
 ```sql
-	SELECT artist , COUNT(*) AS total_no_of_songs
-	FROM spotify
-	GROUP BY artist;
+     SELECT artist , COUNT(*) AS total_no_of_songs
+     FROM spotify
+     GROUP BY artist;
 ```
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
