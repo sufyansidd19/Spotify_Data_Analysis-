@@ -71,8 +71,8 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 ### Easy Level
 1. Retrieve the names of all tracks that have more than 1 billion streams.
    ```sql
-	SELECT * FROM spotify
-	WHERE stream > 1000000000;
+SELECT * FROM spotify
+WHERE stream > 1000000000;
    ```
 2.List all albums along with their respective artists.
 ```sql
@@ -138,7 +138,7 @@ WHERE streamed_on_spotify > streamed_on_youtube;
 ```
 
 ### Advanced Level
-1. Find the top 3 most-viewed tracks for each artist using window functions.
+11. Find the top 3 most-viewed tracks for each artist using window functions.
 ```sql
 WITH ranking 
 as
@@ -153,8 +153,16 @@ ORDER BY 1,3 DESC)
 SELECT * FROM ranking
 WHERE rank<=3
 ```
-3. Write a query to find tracks where the liveness score is above the average.
-4. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
+12. Write a query to find tracks where the liveness score is above the average.
+```sql
+SELECT 
+track,
+artist,
+liveness
+FROM spotify
+WHERE liveness > (SELECT AVG(liveness) FROM spotify)
+```
+13. Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.
 ```sql
 WITH cte
 AS
@@ -171,9 +179,15 @@ SELECT
 FROM cte
 ORDER BY 2 DESC
 ```
-   
-5. Find tracks where the energy-to-liveness ratio is greater than 1.2.
-6. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+14. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+```sql
+SELECT 
+track,
+energy/liveness as energy_to_liveness_ratio
+FROM spotify
+WHERE energy/liveness > 1.2;
+```
+15. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
 
 
 Here’s an updated section for your **Spotify Advanced SQL Project and Query Optimization** README, focusing on the query optimization task you performed. You can include the specific screenshots and graphs as described.
