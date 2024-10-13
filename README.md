@@ -82,8 +82,9 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 3. Get the total number of comments for tracks where `licensed = TRUE`.
 SELECT COUNT(DISTINCT comments) AS total_comments 
 ```sql	
-     FROM spotify 
-     WHERE licensed=TRUE;
+SELECT COUNT(DISTINCT comments) AS total_comments 
+FROM spotify 
+WHERE licensed=TRUE;
 ```
 4. Find all tracks that belong to the album type `single`.
 ```sql
